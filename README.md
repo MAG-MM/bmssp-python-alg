@@ -1,3 +1,7 @@
+# FRI Ljubljana, Algorithms
+
+This repo is clone from [bzantium/bmssp-python](https://github.com/bzantium/bmssp-python) and tweaked to run benchmarks of the new proposed algorithm versus the original Dijkstra's algorithm with and without optimizations.
+
 # Breaking the Sorting Barrier: A Python Implementation of the BMSSP Algorithm
 
 ## 🚀 Introduction
@@ -38,7 +42,7 @@ What if some edges have negative weights? Dijkstra's greedy approach can fail be
 The **Bellman-Ford algorithm** uses a more methodical, dynamic programming approach.
 
 1.  **Initialization**: Similar to Dijkstra, set the source distance to 0 and all others to infinity.
-2.  **Repeated Relaxation**: Relax *every* edge in the graph. Repeat this process `n-1` times.
+2.  **Repeated Relaxation**: Relax _every_ edge in the graph. Repeat this process `n-1` times.
 3.  **Why `n-1` times?**: A simple shortest path can have at most `n-1` edges. In each iteration `i`, the algorithm is guaranteed to find the shortest paths that are at most `i` edges long.
 4.  **Negative Cycle Detection**: After `n-1` iterations, perform one final pass over all edges. If any distance can still be improved, it means the graph contains a negative-weight cycle, and a shortest path is not well-defined.
 
@@ -70,15 +74,15 @@ This represents a significant theoretical improvement over Dijkstra's $O(m + n \
 
 This repository offers two distinct implementations to serve different needs:
 
-  * **`BmsspSolver` (Educational Version):** Designed for learning, this version features extensive comments and a clear structure that closely follows the formal algorithm described in the paper. It prioritizes readability to help users understand the core concepts.
-  * **`BmsspSolverV2` (Optimized Version):** Designed for performance, this version uses more advanced techniques like delta-stepping, efficient memory management, and faster heuristics. It demonstrates the practical potential of the BMSSP algorithm.
+- **`BmsspSolver` (Educational Version):** Designed for learning, this version features extensive comments and a clear structure that closely follows the formal algorithm described in the paper. It prioritizes readability to help users understand the core concepts.
+- **`BmsspSolverV2` (Optimized Version):** Designed for performance, this version uses more advanced techniques like delta-stepping, efficient memory management, and faster heuristics. It demonstrates the practical potential of the BMSSP algorithm.
 
 ### 📁 Project Structure
 
-  * `src/bmssp_solver.py`: Contains the educational (`BmsspSolver`) and optimized (`BmsspSolverV2`) implementations.
-  * `src/comparison_solvers.py`: Reference implementations of Dijkstra's and Bellman-Ford's algorithms.
-  * `src/graph.py`, `graph_loader.py`: Utilities for graph representation and loading data.
-  * `main.py`: The main script to run benchmarks and compare the performance of the different solvers.
+- `src/bmssp_solver.py`: Contains the educational (`BmsspSolver`) and optimized (`BmsspSolverV2`) implementations.
+- `src/comparison_solvers.py`: Reference implementations of Dijkstra's and Bellman-Ford's algorithms.
+- `src/graph.py`, `graph_loader.py`: Utilities for graph representation and loading data.
+- `main.py`: The main script to run benchmarks and compare the performance of the different solvers.
 
 ## 🚀 How to Run
 
@@ -114,21 +118,21 @@ This repository offers two distinct implementations to serve different needs:
 
 The optimized `BmsspSolverV2` is not just a theoretical improvement but also a practical one, outperforming a standard Dijkstra implementation on several large-scale graphs.
 
-| Dataset | Vertices | Edges | BMSSP-V2 (Optimized) | Dijkstra |
-|:---|---:|---:|---:|---:|
-| Stanford | 281K | 2.3M | **0.4584s** | 0.4515s |
-| Google | 916K | 5.1M | **1.2966s** | 1.7452s |
-| Pokec | 1.6M | 30.6M | **8.2102s** | 9.1398s |
-| LiveJournal | 4.8M | 69.0M | **57.5179s** | 64.6767s |
+| Dataset     | Vertices | Edges | BMSSP-V2 (Optimized) | Dijkstra |
+| :---------- | -------: | ----: | -------------------: | -------: |
+| Stanford    |     281K |  2.3M |          **0.4584s** |  0.4515s |
+| Google      |     916K |  5.1M |          **1.2966s** |  1.7452s |
+| Pokec       |     1.6M | 30.6M |          **8.2102s** |  9.1398s |
+| LiveJournal |     4.8M | 69.0M |         **57.5179s** | 64.6767s |
 
 ### Key Observations:
 
-  * **Performance Breakthrough**: `BmsspSolverV2` successfully outperforms Dijkstra on several large-scale web and social network graphs.
-  * **Excellent Scaling**: The performance advantage of `BmsspSolverV2` becomes more pronounced as the size and density of the graphs increase, validating its superior theoretical complexity.
-  * **Educational vs. Optimized**: The educational `BmsspSolver` runs 2-4x slower than Dijkstra, demonstrating the trade-off between clarity and performance. In contrast, `BmsspSolverV2` shows that the algorithm's concepts can be translated into highly efficient code.
+- **Performance Breakthrough**: `BmsspSolverV2` successfully outperforms Dijkstra on several large-scale web and social network graphs.
+- **Excellent Scaling**: The performance advantage of `BmsspSolverV2` becomes more pronounced as the size and density of the graphs increase, validating its superior theoretical complexity.
+- **Educational vs. Optimized**: The educational `BmsspSolver` runs 2-4x slower than Dijkstra, demonstrating the trade-off between clarity and performance. In contrast, `BmsspSolverV2` shows that the algorithm's concepts can be translated into highly efficient code.
 
 ## References
 
-  - **Primary Paper**: [Breaking the Sorting Barrier for Directed Single-Source Shortest Paths](https://arxiv.org/abs/2504.17033)
-  - **Rust Implementation**: [alphastrata/DunMaoSSSP](https://github.com/alphastrata/DunMaoSSSP.git)
-  - **Go Implementation**: [mfreeman451/bmssp-go](https://github.com/mfreeman451/bmssp-go)
+- **Primary Paper**: [Breaking the Sorting Barrier for Directed Single-Source Shortest Paths](https://arxiv.org/abs/2504.17033)
+- **Rust Implementation**: [alphastrata/DunMaoSSSP](https://github.com/alphastrata/DunMaoSSSP.git)
+- **Go Implementation**: [mfreeman451/bmssp-go](https://github.com/mfreeman451/bmssp-go)

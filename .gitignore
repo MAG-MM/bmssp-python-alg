@@ -192,3 +192,7 @@ data/.cache/
 # Logs
 logs/
 *.log
+
+
+data/*
+!data/Rome99.txt
