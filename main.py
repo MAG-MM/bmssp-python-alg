@@ -82,6 +82,22 @@ DATASETS = {
         "start_node": 1469803,
         "end_node": 4835730
     },
+    "twitter": {
+        "url": "https://snap.stanford.edu/data/twitter_combined.txt.gz",
+        "loader": load_snap_graph,
+        "filename": "twitter_combined.txt",
+        "is_directed": True,
+        "start_node": 13348,
+        "end_node": 8978672
+    },
+    "wikitalk": {
+        "url": "https://snap.stanford.edu/data/wiki-Talk.txt.gz",
+        "loader": load_snap_graph,
+        "filename": "wiki-Talk.txt",
+        "is_directed": True,
+        "start_node": 2,
+        "end_node": 1587872
+    },
 }
 
 # Define the directory where all graph data files will be stored.

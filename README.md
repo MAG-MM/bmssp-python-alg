@@ -16,13 +16,15 @@ The optimized dijkstra function keeps the same algorithm but applies safe Python
 
 The test was done on a local Windows 11 machine with Python 3.12.10, AMD Ryzen 9 9950X 16 core processor and 64GB of DDR5-6000 memory.
 
-| Dataset     | Vertices | Edges | BMSSP V1 | Dijkstra | BMSSP-V2 (Optimized) | Dijkstra (Optimized) |
-| :---------- | -------: | ----: | -------: | -------: | -------------------: | -------------------: |
-| Stanford    |     281K |  2.3M |  1.0779s |  0.3447s |          **0.2141s** |              0.3171s |
-| Google      |     916K |  5.1M |  2.6174s |  1.1571s |          **0.6392s** |              1.1297s |
-| Pokec       |     1.6M | 30.6M | 24.1432s |  7.0684s |          **4.1297s** |              6.4779s |
-| California  |     1.9M |  2.7M |  7.3192s |  2.2727s |          **1.9153s** |              2.1733s |
-| LiveJournal |     4.8M | 69.0M | 62.0967s | 18.1283s |          **9.5515s** |              16.4488 |
+| Dataset         | Vertices | Edges | BMSSP V1 | Dijkstra | BMSSP-V2 (Optimized) | Dijkstra (Optimized) |
+| :-------------- | -------: | ----: | -------: | -------: | -------------------: | -------------------: |
+| Stanford        |     281K |  2.3M |  1.0779s |  0.3447s |          **0.2141s** |              0.3171s |
+| Google          |     916K |  5.1M |  2.6174s |  1.1571s |          **0.6392s** |              1.1297s |
+| Pokec           |     1.6M | 30.6M | 24.1432s |  7.0684s |          **4.1297s** |              6.4779s |
+| California      |     1.9M |  2.7M |  7.3192s |  2.2727s |          **1.9153s** |              2.1733s |
+| LiveJournal     |     4.8M | 69.0M | 62.0967s | 18.1283s |          **9.5515s** |             16.4488s |
+| WikiTalk        |     2.4M |    5M |  6.8408s |  3.5418s |          **1.5187s** |              3.3020s |
+| TwitterCombined |     568M |  2.4M | 16.0902s |  4.5017s |          **0.0360s** |             14.9829s |
 
 ![Performance comparison plot](performance-comparison.png)
 
