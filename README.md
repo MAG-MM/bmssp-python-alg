@@ -28,6 +28,8 @@ The test was done on a local Windows 11 machine with Python 3.12.10, AMD Ryzen 9
 
 ![Performance comparison plot](performance-comparison.png)
 
+![Speed comparison plot](speed-comparison.png)
+
 ---
 
 Original Readme:
