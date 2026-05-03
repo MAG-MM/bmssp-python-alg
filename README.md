@@ -4,7 +4,7 @@ This repo is clone from [bzantium/bmssp-python](https://github.com/bzantium/bmss
 
 ### Running locally
 
-Create a python virtual environment, source it and run: `pip install pandas msgpack`
+Create a python virtual environment, source it and run: `pip install pandas msgpack matplotlib`
 
 Then run: `python main.py --data california --no-cache --force-reload --solver v2 --dijkstra-solver standard`
 
@@ -23,6 +23,12 @@ The test was done on a local Windows 11 machine with Python 3.12.10, AMD Ryzen 9
 | Pokec       |     1.6M | 30.6M | 24.1432s |  7.0684s |          **4.1297s** |              6.4779s |
 | California  |     1.9M |  2.7M |  7.3192s |  2.2727s |          **1.9153s** |              2.1733s |
 | LiveJournal |     4.8M | 69.0M | 62.0967s | 18.1283s |          **9.5515s** |              16.4488 |
+
+![Performance comparison plot](performance-comparison.png)
+
+---
+
+Original Readme:
 
 # Breaking the Sorting Barrier: A Python Implementation of the BMSSP Algorithm
 
