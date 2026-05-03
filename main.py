@@ -10,6 +10,7 @@ from src.graph import Graph
 from graph_loader import load_dimacs_graph, load_snap_graph, get_file_size_mb
 from src.bmssp_solver import BmsspSolver, BmsspSolverV2
 from src.comparison_solvers import dijkstra, bellman_ford
+from src.comparison_solvers_v2 import dijkstra_optimized
 
 # A dictionary to manage the configurations for different datasets.
 # Each entry specifies how to load the data, its filename, properties,
@@ -136,7 +137,7 @@ def prepare_dataset(dataset_name: str, dataset_info: dict):
 
 
 
-def run_benchmark(dataset_name: str, solver_version: str, use_cache: bool = True):
+def run_benchmark(dataset_name: str, solver_version: str, dijkstra_solver_version: str, use_cache: bool = True):
     """
     Loads a specified graph and runs a comparative benchmark of the SSSP algorithms.
     """
@@ -201,10 +202,16 @@ def run_benchmark(dataset_name: str, solver_version: str, use_cache: bool = True
     print(f"   Execution time: {end_time - start_time:.4f} seconds")
 
     # Execute and time Dijkstra's algorithm for a performance comparison.
-    print("\nRunning Dijkstra's Algorithm for comparison...")
+    print(f"\nRunning Dijkstra's Algorithm for comparison (Version: {dijkstra_solver_version})...")
+
+    if dijkstra_solver_version == 'optimized':
+        dijkstra_solver = dijkstra_optimized
+    else:
+        dijkstra_solver = dijkstra
+
     start_time = time.time()
-    
-    dijkstra_result = dijkstra(graph, source_idx, goal_idx)
+
+    dijkstra_result = dijkstra_solver(graph, source_idx, goal_idx)
     end_time = time.time()
 
     if dijkstra_result:
@@ -254,6 +261,13 @@ def main():
         help="The BMSSP solver version to use. 'v1' is the basic implementation, 'v2' is the optimized version. Defaults to 'v2'."
     )
     parser.add_argument(
+        '--dijkstra-solver',
+        type=str,
+        default='standard',
+        choices=['standard', 'optimized'],
+        help="The Dijkstra solver version to use. 'standard' is the basic implementation, 'optimized' is the safe optimized version. Defaults to 'standard'."
+    )
+    parser.add_argument(
         '--no-cache',
         action='store_true',
         help="Disable caching for this run (will still load from cache if available)."
@@ -269,7 +283,7 @@ def main():
         use_cache = False
     else:
         use_cache = not args.no_cache
-    run_benchmark(args.data, args.solver, use_cache)
+    run_benchmark(args.data, args.solver, args.dijkstra_solver, use_cache)
 
 
 if __name__ == "__main__":

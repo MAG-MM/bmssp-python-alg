@@ -12,7 +12,7 @@ from .graph import Graph
 INFINITY = float('inf')
 
 
-def dijkstra(graph: Graph, source: int, goal: int) -> Optional[Tuple[float, List[int]]]:
+def dijkstra_optimized(graph: Graph, source: int, goal: int) -> Optional[Tuple[float, List[int]]]:
     """Classic Dijkstra's algorithm with low-risk Python optimizations.
 
     The algorithm is unchanged: it still uses a binary heap, lazy deletion of
